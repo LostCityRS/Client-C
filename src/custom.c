@@ -228,6 +228,17 @@ void draw_info_overlay(Client *c) {
         drawString(c->font_plain11, 8, y, buf, YELLOW);
         y += 13;
 #endif
+#if defined(__vita__)
+        sprintf(buf, "BAT: %d%%", get_battery());
+        drawStringRight(c->font_plain11, x, y, buf, YELLOW, true);
+        y += 13;
+        sprintf(buf, "CPU: %d MHz", get_cpu_freq());
+        drawStringRight(c->font_plain11, x, y, buf, YELLOW, true);
+        y += 13;
+        sprintf(buf, "GPU: %d MHz", get_gpu_freq());
+        drawStringRight(c->font_plain11, x, y, buf, YELLOW, true);
+        y += 13;
+#endif
 #if defined(__3DS__) || defined(__PSP__)
         sprintf(buf, "LRU: %dK / %dK", bump_allocator_used() >> 10, bump_allocator_capacity() >> 10);
         drawString(c->font_plain11, 8, y, buf, YELLOW);

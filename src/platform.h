@@ -36,6 +36,12 @@ int get_cursor_y(void);
 int get_free_mem(void);
 #endif
 
+#if defined(__vita__)
+int get_battery(void);
+int get_cpu_freq(void);
+int get_gpu_freq(void);
+#endif
+
 char *platform_strndup(const char *s, size_t len);
 char *platform_strdup(const char *s);
 // int platform_asprintf(char **str, const char *fmt, ...);

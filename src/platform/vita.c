@@ -12,6 +12,7 @@
 #include "../platform.h"
 
 #include <psp2/display.h>
+#include <psp2/power.h>
 #include <psp2/kernel/processmgr.h>
 #include <psp2/kernel/sysmem.h>
 #include <psp2/kernel/threadmgr.h>
@@ -27,6 +28,18 @@ extern Custom _Custom;
 static int mutex;
 static SceUID displayblock;
 static void *base;
+
+int get_battery(void) {
+    return scePowerGetBatteryLifePercent();
+}
+
+int get_cpu_freq(void) {
+    return scePowerGetArmClockFrequency();
+}
+
+int get_gpu_freq(void) {
+    return scePowerGetGpuClockFrequency();
+}
 
 int platform_init(void) {
     return true;
